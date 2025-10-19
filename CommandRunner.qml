@@ -167,7 +167,8 @@ Item {
     function runCommand(command) {
         addToHistory(command)
         const terminal = getTerminalCommand()
-        Quickshell.execDetached([terminal.cmd, terminal.execFlag, "sh", "-c", command])
+        const wrappedCommand = command + "; echo '\nPress Enter to close...'; read"
+        Quickshell.execDetached([terminal.cmd, terminal.execFlag, "sh", "-c", wrappedCommand])
         showToast("Running in " + terminal.cmd + ": " + command)
     }
 
