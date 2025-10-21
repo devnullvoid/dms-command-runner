@@ -31,7 +31,7 @@ Item {
 
             items.push({
                 name: "Run: " + command,
-                icon: "play_arrow",
+                icon: "material:play_arrow",
                 comment: "Execute command in terminal",
                 action: "run:" + command,
                 categories: ["Command Runner"]
@@ -39,7 +39,7 @@ Item {
 
             items.push({
                 name: "Run in background: " + command,
-                icon: "settings_backup_restore",
+                icon: "material:settings_backup_restore",
                 comment: "Execute command silently in background",
                 action: "background:" + command,
                 categories: ["Command Runner"]
@@ -47,7 +47,7 @@ Item {
 
             items.push({
                 name: "Copy: " + command,
-                icon: "content_copy",
+                icon: "material:content_copy",
                 comment: "Copy command to clipboard",
                 action: "copy:" + command,
                 categories: ["Command Runner"]
@@ -57,7 +57,7 @@ Item {
         if (commandHistory.length > 0) {
             const historyHeader = {
                 name: "──────── Recent Commands ────────",
-                icon: "history",
+                icon: "material:history",
                 comment: "Commands from your history",
                 action: "noop",
                 categories: ["Command Runner"]
@@ -72,7 +72,7 @@ Item {
                 const cmd = filteredHistory[i]
                 items.push({
                     name: cmd,
-                    icon: "history",
+                    icon: "material:history",
                     comment: "Run from history",
                     action: "run:" + cmd,
                     categories: ["Command Runner"]
@@ -101,7 +101,7 @@ Item {
         if (!query || items.length === 3) {
             items.push({
                 name: "──────── Common Commands ────────",
-                icon: "apps",
+                icon: "material:apps",
                 comment: "Frequently used commands",
                 action: "noop",
                 categories: ["Command Runner"]
@@ -118,7 +118,7 @@ Item {
                 const cmd = filteredCommon[i]
                 items.push({
                     name: cmd.cmd,
-                    icon: "terminal",
+                    icon: "material:terminal",
                     comment: cmd.desc,
                     action: "run:" + cmd.cmd,
                     categories: ["Command Runner"]
