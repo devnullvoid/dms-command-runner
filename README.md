@@ -1,5 +1,8 @@
 # Command Runner
 
+
+![Screenshot](screenshot.png)
+
 A DankMaterialShell launcher plugin for executing shell commands directly from the launcher with history tracking and preset shortcuts.
 
 ## Features
