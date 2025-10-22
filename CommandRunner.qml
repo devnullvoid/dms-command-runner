@@ -31,7 +31,7 @@ Item {
 
             items.push({
                 name: "Run: " + command,
-                icon: "play_arrow",
+                icon: "terminal",
                 comment: "Execute command in terminal",
                 action: "run:" + command,
                 categories: ["Command Runner"]
@@ -39,7 +39,7 @@ Item {
 
             items.push({
                 name: "Run in background: " + command,
-                icon: "settings_backup_restore",
+                icon: "system-run",
                 comment: "Execute command silently in background",
                 action: "background:" + command,
                 categories: ["Command Runner"]
@@ -47,7 +47,7 @@ Item {
 
             items.push({
                 name: "Copy: " + command,
-                icon: "content_copy",
+                icon: "edit-copy",
                 comment: "Copy command to clipboard",
                 action: "copy:" + command,
                 categories: ["Command Runner"]
@@ -80,51 +80,7 @@ Item {
             }
         }
 
-        const commonCommands = [
-            {cmd: "htop", desc: "System monitor"},
-            {cmd: "ncdu", desc: "Disk usage analyzer"},
-            {cmd: "nmtui", desc: "Network manager TUI"},
-            {cmd: "btop", desc: "Resource monitor"},
-            {cmd: "ranger", desc: "File manager"},
-            {cmd: "vim", desc: "Text editor"},
-            {cmd: "nano", desc: "Text editor"},
-            {cmd: "neofetch", desc: "System information"},
-            {cmd: "fastfetch", desc: "System information (fast)"},
-            {cmd: "journalctl -f", desc: "View system logs"},
-            {cmd: "systemctl status", desc: "System service status"},
-            {cmd: "df -h", desc: "Disk space usage"},
-            {cmd: "free -h", desc: "Memory usage"},
-            {cmd: "ps aux", desc: "Process list"},
-            {cmd: "ip addr", desc: "Network interfaces"}
-        ]
 
-        if (!query || items.length === 3) {
-            items.push({
-                name: "──────── Common Commands ────────",
-                icon: "apps",
-                comment: "Frequently used commands",
-                action: "noop",
-                categories: ["Command Runner"]
-            })
-
-            const filteredCommon = query
-                ? commonCommands.filter(c =>
-                    c.cmd.toLowerCase().includes(query.toLowerCase()) ||
-                    c.desc.toLowerCase().includes(query.toLowerCase())
-                  )
-                : commonCommands
-
-            for (let i = 0; i < filteredCommon.length; i++) {
-                const cmd = filteredCommon[i]
-                items.push({
-                    name: cmd.cmd,
-                    icon: "terminal",
-                    comment: cmd.desc,
-                    action: "run:" + cmd.cmd,
-                    categories: ["Command Runner"]
-                })
-            }
-        }
 
         return items
     }
