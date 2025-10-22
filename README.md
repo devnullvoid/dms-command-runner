@@ -2,6 +2,8 @@
 
 A DankMaterialShell launcher plugin for executing shell commands directly from the launcher with history tracking and preset shortcuts.
 
+![Command Runner Screenshot](screenshot.png)
+
 ## Features
 
 - **Execute Commands** - Run any shell command in terminal or background
@@ -138,7 +140,7 @@ Access pre-configured shortcuts without typing:
 
 ## Compatibility
 
-- **Compositors**: Niri, Hyprland, Sway, and any Wayland compositor
+- **Compositors**: Niri and Hyprland
 - **Distros**: Universal - works on any Linux distribution
 - **Terminals**: Supports all major terminal emulators
 
