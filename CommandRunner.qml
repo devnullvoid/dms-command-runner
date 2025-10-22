@@ -144,8 +144,8 @@ Item {
 
     function getTerminalCommand() {
         if (pluginService) {
-            const terminal = pluginService.loadPluginData("commandRunner", "terminal", "")
-            const execFlag = pluginService.loadPluginData("commandRunner", "execFlag", "")
+            const terminal = pluginService.loadPluginData("commandRunner", "terminal", "kitty")
+            const execFlag = pluginService.loadPluginData("commandRunner", "execFlag", "-e")
             if (terminal && execFlag) {
                 return {cmd: terminal, execFlag: execFlag}
             }
