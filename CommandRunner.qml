@@ -31,7 +31,7 @@ Item {
 
             items.push({
                 name: "Run: " + command,
-                icon: "terminal",
+                icon: "material:terminal",
                 comment: "Execute command in terminal",
                 action: "run:" + command,
                 categories: ["Command Runner"]
@@ -39,7 +39,7 @@ Item {
 
             items.push({
                 name: "Run in background: " + command,
-                icon: "system-run",
+                icon: "material:step_over",
                 comment: "Execute command silently in background",
                 action: "background:" + command,
                 categories: ["Command Runner"]
@@ -47,7 +47,7 @@ Item {
 
             items.push({
                 name: "Copy: " + command,
-                icon: "edit-copy",
+                icon: "material:content_copy",
                 comment: "Copy command to clipboard",
                 action: "copy:" + command,
                 categories: ["Command Runner"]
@@ -55,15 +55,6 @@ Item {
         }
 
         if (commandHistory.length > 0) {
-            const historyHeader = {
-                name: "──────── Recent Commands ────────",
-                icon: "history",
-                comment: "Commands from your history",
-                action: "noop",
-                categories: ["Command Runner"]
-            }
-            items.push(historyHeader)
-
             const filteredHistory = query
                 ? commandHistory.filter(cmd => cmd.toLowerCase().includes(query.toLowerCase()))
                 : commandHistory
@@ -72,7 +63,7 @@ Item {
                 const cmd = filteredHistory[i]
                 items.push({
                     name: cmd,
-                    icon: "history",
+                    icon: "material:history",
                     comment: "Run from history",
                     action: "run:" + cmd,
                     categories: ["Command Runner"]
