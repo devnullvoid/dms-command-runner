@@ -57,6 +57,8 @@ cp -r CommandRunner ~/.config/DankMaterialShell/plugins/
 ## Usage
 
 ### Execute Commands in Terminal
+Note: Avoid triggers reserved by DMS or other plugins (e.g., `/` is used for file search).
+
 1. Open launcher (Ctrl+Space)
 2. Type `>` followed by command
 3. Examples:
@@ -93,7 +95,8 @@ Access pre-configured shortcuts without typing:
 
 ## Settings
 
-- **Trigger**: Set custom trigger (`>`, `$`, `!`, `/run`, etc.) or disable for always-on
+- **Trigger**: Set custom trigger (`>`, `$`, `!`, `run`, etc.) or disable for always-on
+  - Avoid triggers reserved by DMS or other plugins (e.g., `/` is used for file search).
 - **Terminal Emulator**: Configure which terminal to use
 - **Exec Flag**: Set the command execution flag for your terminal
 - **Max History Items**: Configure history size (1-100 items)
