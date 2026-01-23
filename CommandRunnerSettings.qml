@@ -51,7 +51,7 @@ PluginSettings {
         visible: !noTriggerToggle.value
         settingKey: "trigger"
         label: "Trigger"
-        description: "Prefix character(s) to activate command runner (e.g., >, $, !, /run)"
+        description: "Prefix character(s) to activate command runner (e.g., >, $, !, run). Avoid triggers reserved by DMS or other plugins (e.g., / for file search)."
         placeholder: ">"
         defaultValue: ">"
     }
