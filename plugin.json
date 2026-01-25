@@ -2,7 +2,7 @@
   "id": "commandRunner",
   "name": "Command Runner",
   "description": "Execute shell commands directly from the launcher",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "author": "devnullvoid",
   "icon": "terminal",
   "type": "launcher",
