@@ -27,12 +27,14 @@ QtObject {
         if (query && query.trim().length > 0) {
             const command = query.trim();
 
+            // Use _preScored to ensure DMS preserves our item ordering
             items.push({
                 name: "Run: " + command,
                 icon: "material:terminal",
                 comment: "Execute command in terminal",
                 action: "run:" + command,
-                categories: ["Command Runner"]
+                categories: ["Command Runner"],
+                _preScored: 1000
             });
 
             items.push({
@@ -40,7 +42,8 @@ QtObject {
                 icon: "material:step_over",
                 comment: "Execute command silently in background",
                 action: "background:" + command,
-                categories: ["Command Runner"]
+                categories: ["Command Runner"],
+                _preScored: 900
             });
 
             items.push({
@@ -48,7 +51,8 @@ QtObject {
                 icon: "material:content_copy",
                 comment: "Copy command to clipboard",
                 action: "copy:" + command,
-                categories: ["Command Runner"]
+                categories: ["Command Runner"],
+                _preScored: 800
             });
         }
 
@@ -62,7 +66,8 @@ QtObject {
                     icon: "material:history",
                     comment: "Run from history",
                     action: "run:" + cmd,
-                    categories: ["Command Runner"]
+                    categories: ["Command Runner"],
+                    _preScored: 100 - i
                 });
             }
         }
