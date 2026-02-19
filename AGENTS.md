@@ -8,6 +8,11 @@ A DankMaterialShell (DMS) launcher plugin for executing shell commands directly 
 **Default Trigger**: `>`
 **Version**: 1.1.2
 
+## Recent Maintenance Notes (2026-02-18)
+- The `Always Active`/`noTrigger` setting has been removed from settings UI.
+- Trigger configuration is always visible and trigger-based usage is now the expected path.
+- Legacy empty trigger values are normalized to `>` in settings initialization.
+
 ## Architecture Overview
 
 ```
