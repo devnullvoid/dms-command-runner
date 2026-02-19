@@ -8,6 +8,12 @@ PluginSettings {
     id: root
     pluginId: "commandRunner"
 
+    Component.onCompleted: {
+        const currentTrigger = root.loadValue("trigger", ">");
+        if (!currentTrigger || currentTrigger.trim().length === 0)
+            root.saveValue("trigger", ">");
+    }
+
     StyledText {
         width: parent.width
         text: "Command Runner"
@@ -31,24 +37,8 @@ PluginSettings {
         opacity: 0.3
     }
 
-    ToggleSetting {
-        id: noTriggerToggle
-        settingKey: "noTrigger"
-        label: "Always Active"
-        description: value ? "Items will always show in the launcher (no trigger needed)." : "Set the trigger text to activate this plugin. Type the trigger in the launcher to run commands."
-        defaultValue: false
-        onValueChanged: {
-            if (value) {
-                root.saveValue("trigger", "");
-            } else {
-                root.saveValue("trigger", triggerSetting.value || ">");
-            }
-        }
-    }
-
     StringSetting {
         id: triggerSetting
-        visible: !noTriggerToggle.value
         settingKey: "trigger"
         label: "Trigger"
         description: "Prefix character(s) to activate command runner (e.g., >, $, !, run). Avoid triggers reserved by DMS or other plugins (e.g., / for file search)."
@@ -243,7 +233,7 @@ PluginSettings {
         bottomPadding: Theme.spacingL
 
         Repeater {
-            model: ["1. Open Launcher (Ctrl+Space or click launcher button)", noTriggerToggle.value ? "2. Commands are always visible in the launcher" : "2. Type your trigger (default: >) followed by command", noTriggerToggle.value ? "3. Type your command, e.g., 'htop' or 'ls -la'" : "3. Example: '> htop' or '> ls -la'", "4. Select 'Run' for terminal, 'Run in background' for silent execution", "5. Browse recent commands from history"]
+            model: ["1. Open Launcher (Ctrl+Space or click launcher button)", "2. Type your trigger (default: >) followed by command", "3. Example: '> htop' or '> ls -la'", "4. Select 'Run' for terminal, 'Run in background' for silent execution", "5. Browse recent commands from history"]
 
             StyledText {
                 required property string modelData
