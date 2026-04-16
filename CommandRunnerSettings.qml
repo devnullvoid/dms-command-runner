@@ -86,9 +86,9 @@ PluginSettings {
             DankTextField {
                 id: terminalField
                 width: parent.width
-                text: root.loadValue("terminal", "kitty")
                 placeholderText: "kitty"
-                onTextEdited: root.saveValue("terminal", text.trim())
+                Component.onCompleted: text = root.loadValue("terminal", "kitty")
+                onEditingFinished: root.saveValue("terminal", text.trim())
             }
         }
 
@@ -105,9 +105,9 @@ PluginSettings {
             DankTextField {
                 id: execFlagField
                 width: parent.width
-                text: root.loadValue("execFlag", "-e")
                 placeholderText: "-e"
-                onTextEdited: root.saveValue("execFlag", text.trim())
+                Component.onCompleted: text = root.loadValue("execFlag", "-e")
+                onEditingFinished: root.saveValue("execFlag", text.trim())
             }
         }
     }
@@ -150,9 +150,9 @@ PluginSettings {
         DankTextField {
             id: historyField
             width: 80
-            text: root.loadValue("maxHistoryItems", "20").toString()
             placeholderText: "20"
-            onTextEdited: {
+            Component.onCompleted: text = root.loadValue("maxHistoryItems", "20").toString()
+            onEditingFinished: {
                 const num = parseInt(text);
                 if (!isNaN(num) && num > 0 && num <= 100) {
                     root.saveValue("maxHistoryItems", num);

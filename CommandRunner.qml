@@ -64,7 +64,7 @@ QtObject {
                 items.push({
                     name: cmd,
                     icon: "material:history",
-                    comment: "Run from history",
+                    comment: "Run from history · Shift+Enter: run in background",
                     action: "run:" + cmd,
                     categories: ["Command Runner"],
                     _preScored: 100 - i
@@ -97,6 +97,25 @@ QtObject {
         default:
             showToast("Unknown action: " + actionType);
         }
+    }
+
+    // Returns the command string for "run:" items; used by getPasteArgs.
+    function getPasteText(item) {
+        if (!item?.action)
+            return null;
+        const actionParts = item.action.split(":");
+        if (actionParts[0] !== "run")
+            return null;
+        return actionParts.slice(1).join(":");
+    }
+
+    // Called by DMS on Shift+Enter: runs the command in background instead of
+    // opening a terminal window.
+    function getPasteArgs(item) {
+        const command = getPasteText(item);
+        if (!command)
+            return null;
+        return ["sh", "-c", command];
     }
 
     function copyToClipboard(text) {
