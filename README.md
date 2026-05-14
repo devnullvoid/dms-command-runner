@@ -7,6 +7,7 @@ A DankMaterialShell launcher plugin for executing shell commands directly from t
 ## Features
 
 - **Execute Commands** - Run any shell command in terminal or background
+- **Autocomplete Suggestions** - Shell-style command and path suggestions appear as you type
 - **Command History** - Track and reuse recently executed commands
 - **Common Shortcuts** - Quick access to frequently used commands (htop, btop, ncdu, etc.)
 - **Terminal Support** - Auto-detect or configure your preferred terminal emulator
@@ -68,6 +69,11 @@ Note: Avoid triggers reserved by DMS or other plugins (e.g., `/` is used for fil
    - `> journalctl -f` - View live system logs
 4. Select "Run: command" and press Enter
 
+### Autocomplete Suggestions
+- Start typing a command name to see executable suggestions
+- Type part of a path after a space (for example `> ls ~/Do`) to see file and directory suggestions
+- Select a suggestion to run the completed command directly
+
 ### Execute Commands in Background
 1. Type command as above
 2. Select "Run in background: command"
@@ -82,6 +88,7 @@ Note: Avoid triggers reserved by DMS or other plugins (e.g., `/` is used for fil
 - Recent commands appear automatically in the list
 - Click any historical command to re-execute
 - History persists across sessions
+- Autocomplete suggestions are shown ahead of history when available
 
 ### Common Command Shortcuts
 Access pre-configured shortcuts without typing:

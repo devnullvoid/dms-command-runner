@@ -200,7 +200,7 @@ PluginSettings {
         leftPadding: Theme.spacingM
 
         Repeater {
-            model: ["Run commands in terminal or background", "Command history with recent commands", "Copy commands to clipboard", "Configurable terminal emulator"]
+            model: ["Run commands in terminal or background", "Shell-style command and path suggestions", "Command history with recent commands", "Copy commands to clipboard", "Configurable terminal emulator"]
 
             StyledText {
                 required property string modelData
