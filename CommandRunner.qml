@@ -164,7 +164,7 @@ QtObject {
                         comment: "Autocomplete suggestion · Enter: run · Shift+Enter: run in background",
                         action: "run:" + suggestion,
                         categories: ["Command Runner"],
-                        _preScored: 1100 - i
+                        _preScored: 950 - i
                     });
                 }
             }
