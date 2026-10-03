@@ -1,0 +1,2 @@
+module qs.Services
+singleton ToastService 1.0 ToastService.qml

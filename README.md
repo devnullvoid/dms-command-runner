@@ -13,6 +13,7 @@ A DankMaterialShell launcher plugin for executing shell commands directly from t
 - **Terminal Support** - Auto-detect or configure your preferred terminal emulator
 - **Background Execution** - Run commands silently without opening a terminal
 - **Clipboard Copy** - Copy commands to clipboard before executing
+- **Paste Command Output** - Shift+Enter runs a command and pastes its stdout into the focused application
 - **Configurable Trigger** - Default `>` or set your own trigger
 
 ## Installation
@@ -73,11 +74,23 @@ Note: Avoid triggers reserved by DMS or other plugins (e.g., `/` is used for fil
 - Start typing a command name to see executable suggestions
 - Type part of a path after a space (for example `> ls ~/Do`) to see file and directory suggestions
 - Select a suggestion to run the completed command directly
+- Completion searches the current command or directory on demand and returns at most eight suggestions; it does not scan your home directory recursively at startup
 
 ### Execute Commands in Background
 1. Type command as above
 2. Select "Run in background: command"
 3. Command executes silently without terminal window
+
+### Paste Command Output
+
+1. Focus the text field where you want the output
+2. Open the launcher and enter a finite command, such as `> echo hello`
+3. Select its "Run" entry, an autocomplete suggestion, or a history entry and press Shift+Enter
+4. The command's stdout replaces the clipboard, then DMS pastes it into the previously focused application
+
+Commands run with Shift+Enter are added to history just like terminal and background runs.
+
+Multiline output and trailing newlines are preserved. Stderr is not copied. An empty stdout replaces the clipboard with empty text, including when a command fails without producing stdout. Use the explicit "Run in background" entry for background execution. Paste requires DMS clipboard/paste support and `wl-copy`; DMS controls paste timing and process lifetime.
 
 ### Copy Command to Clipboard
 1. Type command
@@ -175,6 +188,17 @@ Access pre-configured shortcuts without typing:
 ## Contributing
 
 Found a bug or want to add features? Open an issue or submit a pull request!
+
+### Regression checks
+
+```bash
+node --test tests/*.test.cjs
+qmlformat CommandRunner.qml >/dev/null
+```
+
+The helper tests exercise actual shell commands with an isolated clipboard substitute. The Quickshell check loads the component with a settings stub and verifies persistent paste history, launcher refresh notifications, command/path suggestions without an extra keystroke, rapid query changes, and query clearing. Real compositor paste/focus behavior still needs an interactive check.
+
+For an optional memory comparison against the pre-fix version, run `node tests/memory-benchmark.cjs 5c2cab4`. This creates a temporary 50,000-file tree and compares isolated Quickshell RSS; it does not scan your real home directory.
 
 ## License
 

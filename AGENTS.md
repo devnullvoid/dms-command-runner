@@ -6,7 +6,16 @@ A DankMaterialShell (DMS) launcher plugin for executing shell commands directly 
 **Language**: QML (Qt Modeling Language)
 **Type**: Launcher plugin for DankMaterialShell
 **Default Trigger**: `>`
-**Version**: 1.1.2
+**Version**: 1.4.2
+
+## Recent Maintenance Notes (2026-10-03)
+
+- Shift+Enter runs the selected command and copies its stdout with `wl-copy` before DMS pastes it (#8). It is no longer described as background execution; use the explicit background action instead.
+- Shift+Enter also records the command in persistent history, using the same deduplication as terminal/background runs.
+- Forward `itemsChanged` to `pluginService.requestLauncherUpdate("commandRunner")`. DMS does not subscribe directly to the plugin's local signal; without forwarding, async suggestions appear only after another keystroke.
+- Completion is on demand, capped at eight suggestions and 64 KiB of process stdout (#7). Do not restore recursive home-directory scanning or shared accumulating output buffers.
+- `CommandRunnerHelpers.js` constructs the shell argument arrays and parses completion output. User input is passed as a positional argument, never interpolated into the wrapper script.
+- Run `node --test tests/*.test.cjs` for shell-helper and isolated Quickshell integration checks. The Quickshell test uses a temporary config and settings stub; it does not reload the user's shell or modify their clipboard.
 
 ## Recent Maintenance Notes (2026-02-18)
 - The `Always Active`/`noTrigger` setting has been removed from settings UI.
